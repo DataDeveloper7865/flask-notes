@@ -10,7 +10,7 @@ from forms import AddUserForm, LoginUserForm
 # from env import USER_POSTGRES, PASSWORD_POSTGRES
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///cupcakes'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///users'
 
 #Windows database configuration
 # app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{USER_POSTGRES}:{PASSWORD_POSTGRES}@127.0.0.1/users"
