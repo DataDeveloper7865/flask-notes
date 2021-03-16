@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+
+{%block title%}
+    {{username}}'s page
+{%endblock%}
+
+{%block content%}
+
+{% for msg in get_flashed_messages() %}
+  <div>{{ msg }}</div>
+{% endfor %}
+
+<h1>{{username}}</h1>
+
+<div>
+    <h2>First Name: {{first_name}}</h2>
+    <h2>Last Name: {{last_name}}</h2>
+    <h2>Email: {{email}}</h2>
+</div>
+
+<div>
+    <ul>
+        {%for note in notes%}
+        <li>
+            <form action="/notes/{{note.id}}/update" method="POST">
+                <button type="submit">Update</button>
+            </form>
+            <form action="/notes/{{note.id}}/delete" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+            {{note.title}}:{{note.content}}
+        </li>
+        {%endfor%}
+    </ul>
+
+    <a href="/users/{{username}}/notes/add">Add a Note</a>
+    <form action="/users/{{username}}/delete" method="POST">
+        <button type="submit">Delete User</button>
+    </form>
+</div>
+
+{%endblock%}
